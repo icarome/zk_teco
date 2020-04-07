@@ -1,7 +1,7 @@
 {
     "domain": "zk_teco",
     "name": "ZKTeco Door",
-    "documentation": "https://www.home-assistant.io/integrations/zk_teco",
+    "documentation": "https://github.com/icarome/zk_teco/",
     "requirements": ["pyzk"],
     "dependencies": [
       "sensor"
