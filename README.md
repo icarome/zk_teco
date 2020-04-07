@@ -28,14 +28,14 @@ Home Assistant component that can control the lock of ZKTeco biometrics stand al
 
 ## Sample lock Configuration
 
-lock:
-  - platform: zk_teco
-    name: Porta
-    host: 192.168.0.202
-    password: 12345
-    protocol: udp
-    lock_timeout: 10
-    
+      lock:
+        - platform: zk_teco
+          name: Porta
+          host: 192.168.0.202
+          password: 12345
+          protocol: udp
+          lock_timeout: 10
+
     
     
     
