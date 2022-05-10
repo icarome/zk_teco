@@ -1,4 +1,4 @@
-from homeassistant.components.lock import SUPPORT_OPEN, LockDevice, PLATFORM_SCHEMA
+from homeassistant.components.lock import SUPPORT_OPEN, LockEntity, PLATFORM_SCHEMA
 from homeassistant.const import STATE_LOCKED, STATE_UNLOCKED
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
@@ -50,7 +50,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     await async_setup_platform(hass, {}, async_add_entities)
 
 
-class DemoLock(LockDevice):
+class DemoLock(LockEntity):
     """Representation of a Demo lock."""
 
     def __init__(self, name, state, openable=False, host="192.168.0.202", password="12345", force_udp="True", unlock_timeout=15):
