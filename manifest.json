@@ -1,7 +1,7 @@
 {
     "domain": "zk_teco",
     "name": "ZKTeco Door",
-    "version": "2.0",
+    "version": "3.0",
     "documentation": "https://github.com/icarome/zk_teco/",
     "requirements": ["pyzk"],
     "dependencies": [

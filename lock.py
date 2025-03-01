@@ -1,4 +1,4 @@
-from homeassistant.components.lock import SUPPORT_OPEN, LockEntity, PLATFORM_SCHEMA
+from homeassistant.components.lock import LockEntity, LockEntityFeature, PLATFORM_SCHEMA
 from homeassistant.const import STATE_LOCKED, STATE_UNLOCKED
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
@@ -107,4 +107,4 @@ class DemoLock(LockEntity):
     def supported_features(self):
         """Flag supported features."""
         if self._openable:
-            return SUPPORT_OPEN
+            return LockEntityFeature.OPEN
