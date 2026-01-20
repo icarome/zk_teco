@@ -1,5 +1,5 @@
 from homeassistant.components.lock import LockEntity, LockEntityFeature, PLATFORM_SCHEMA
-from homeassistant.const import STATE_LOCKED, STATE_UNLOCKED
+from homeassistant.components.lock import LockState
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 import logging
@@ -40,7 +40,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     unlock_timeout = config.get(CONF_UNLOCK_TIMEOUT)
     async_add_entities(
         [
-            DemoLock(name, STATE_LOCKED, False, host, password, force_udp, unlock_timeout),
+            DemoLock(name, LockState.LOCKED, False, host, password, force_udp, unlock_timeout),
         ]
     )
 
@@ -75,11 +75,11 @@ class DemoLock(LockEntity):
     @property
     def is_locked(self):
         """Return true if lock is locked."""
-        return self._state == STATE_LOCKED
+        return self._state == LockState.LOCKED
 
     def lock(self, **kwargs):
         """Lock the device."""
-        self._state = STATE_LOCKED
+        self._state = LockState.LOCKED
         self.schedule_update_ha_state()
 
     def unlock(self, **kwargs):
@@ -93,14 +93,14 @@ class DemoLock(LockEntity):
             if conn:
                 conn.enable_device()
                 conn.disconnect()
-        self._state = STATE_UNLOCKED
+        self._state = LockState.UNLOCKED
         self.schedule_update_ha_state()
         time.sleep(self._unlock_timeout)
         self.lock()
 
     def open(self, **kwargs):
         """Open the door latch."""
-        self._state = STATE_UNLOCKED
+        self._state = LockState.UNLOCKED
         self.schedule_update_ha_state()
 
     @property
